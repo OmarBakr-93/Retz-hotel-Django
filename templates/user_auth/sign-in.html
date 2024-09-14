@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+{%load staticfiles%}
+{% load widget_tweaks %}
+{% block page_title %}Login - B&A{% endblock %}
+{%block content%}
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-4 offset-lg-4 col-sm-6 col-xs-8">
+      <div style="margin-top: 39px; margin-bottom: 39px;" class="sidebar_title">Login</div>
+      <form class="" method="post">
+
+        {%csrf_token%}
+
+        <!-- username -->
+        <div style="margin-bottom: 18px">
+          {% render_field form.username type="email" class="contact_input" placeholder="Your email" %}
+          <div class="input_border"></div>
+        </div>
+
+        <!-- password -->
+        <div style="margin-bottom: 18px">
+          {% render_field form.password class="contact_input" placeholder="Your password" %}
+          <div class="input_border"></div>
+        </div>
+
+        {% if form.non_field_errors %}
+        <div class="alert alert-warning">
+          {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+        <button type="submit" class="contact_button">Sing-in</button>
+      </form>
+    </div>
+  </div>
+</div>
+{%endblock%}
+
+{% block  footer%}
+{% endblock %}
